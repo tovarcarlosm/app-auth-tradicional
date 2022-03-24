@@ -1,0 +1,59 @@
+<div class="container mt-5">
+  <form (ngSubmit)="registrar(formulario)" #formulario="ngForm"
+    class="position-absolute top-50 start-50 translate-middle">
+    <div class="text-center">
+      <i class="fab fa-angular fa-10x"></i>
+    </div>
+    <h2 class="text-center mb-5">Crear cuenta</h2>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email"
+             class="form-control"
+             id="email"
+             name="email"
+             required
+             aria-describedby="emailHelp"
+             [(ngModel)]="usuario.email"
+      >
+      <span *ngIf="formulario.submitted && formulario.controls['email'].errors" class="text-danger animate__animated animate__fadeInLeft">
+        El correo es obligatorio
+      </span>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Contraseña</label>
+      <input type="password"
+             class="form-control"
+             id="password"
+             name="password"
+             required
+             minlength="8"
+             [(ngModel)]="usuario.password"
+      >
+      <span *ngIf="formulario.submitted && formulario.controls['password'].errors" class="text-danger animate__animated animate__fadeInLeft">
+        Se requieren mínimo 8 caracteres
+      </span>
+    </div>
+    <div class="mb-3">
+      <label for="nombreCompleto" class="form-label">Nombre Completo</label>
+      <input type="text"
+             class="form-control"
+             id="nombreCompleto"
+             name="nombreCompleto"
+             required
+             minlength="3"
+             [(ngModel)]="usuario.nombreCompleto"
+      >
+      <span *ngIf="formulario.submitted && formulario.controls['nombreCompleto'].errors" class="text-danger animate__animated animate__fadeInLeft">
+        El nombre es obligatorio
+      </span>
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="recordar">
+      <label class="form-check-label" for="recordar">Recuérdame</label>
+    </div>
+    <div class="d-grid gap-2 mt-3">
+      <button class="btn btn-primary" type="submit">Registrar</button>
+    </div>
+
+  </form>
+</div>
