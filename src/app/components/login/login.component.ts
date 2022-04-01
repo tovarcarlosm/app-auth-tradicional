@@ -5,24 +5,30 @@ import { Router } from "@angular/router";
 import { UsuarioModel } from "../../models/usuario.model";
 import { AuthService } from "../../services/auth.service";
 
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2'
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class RegistroComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   usuario: UsuarioModel = new UsuarioModel();
   recordar = false;
 
   constructor( private auth : AuthService,
-               private router: Router ) { }
+               private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if ( localStorage.getItem('email') ) {
+      // @ts-ignore
+      this.usuario.email = localStorage.getItem('email');
+      this.recordar = true;
+    }
+  }
 
-  registrar(formulario:NgForm){
+  login(formulario:NgForm){
     if(formulario.invalid){ return; }
 
     Swal.fire({
@@ -33,7 +39,7 @@ export class RegistroComponent implements OnInit {
     });
     Swal.showLoading();
 
-    this.auth.registrar( this.usuario )
+    this.auth.iniciarSesion( this.usuario )
       .subscribe( resp => {
         Swal.close();
 

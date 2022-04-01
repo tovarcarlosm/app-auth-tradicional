@@ -1,10 +1,10 @@
 <div class="container mt-5">
-  <form (ngSubmit)="registrar(formulario)" #formulario="ngForm"
-    class="position-absolute top-50 start-50 translate-middle">
+  <form (ngSubmit)="login(formulario)" #formulario="ngForm"
+        class="position-absolute top-50 start-50 translate-middle">
     <div class="text-center">
       <i class="fab fa-angular fa-10x"></i>
     </div>
-    <h2 class="text-center mb-5">Crear cuenta</h2>
+    <h2 class="text-center mb-5">Iniciar sesión</h2>
     <div class="mb-3">
       <label for="email" class="form-label">Email</label>
       <input type="email"
@@ -33,20 +33,6 @@
         Se requieren mínimo 8 caracteres
       </span>
     </div>
-    <div class="mb-3">
-      <label for="nombreCompleto" class="form-label">Nombre Completo</label>
-      <input type="text"
-             class="form-control"
-             id="nombreCompleto"
-             name="nombreCompleto"
-             required
-             minlength="3"
-             [(ngModel)]="usuario.nombreCompleto"
-      >
-      <span *ngIf="formulario.submitted && formulario.controls['nombreCompleto'].errors" class="text-danger animate__animated animate__fadeInLeft">
-        El nombre es obligatorio
-      </span>
-    </div>
     <div class="mb-3 form-check">
       <input type="checkbox"
              class="form-check-input"
@@ -55,10 +41,10 @@
              [(ngModel)]="recordar"
       >
       <label class="form-check-label" for="recordar">Recuérdame</label>
-      <a href="/login" class="m-5">¿Ya tiene una cuenta?</a>
+      <a href="/registro" class="m-5">¿No tiene una cuenta?</a>
     </div>
     <div class="d-grid gap-2 mt-3">
-      <button class="btn btn-primary" type="submit">Registrar</button>
+      <button class="btn btn-primary" type="submit">Iniciar sesión</button>
     </div>
 
   </form>

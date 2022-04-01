@@ -5,15 +5,21 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { LoginComponent } from './components/login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { APP_ROUTING } from "./app.routes";
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistroComponent
+    RegistroComponent,
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    APP_ROUTING,
     HttpClientModule
   ],
   providers: [],
